@@ -16,8 +16,13 @@ jobs:
     - name: Commit do Relatorio
       run: |
           git config user.name "github-actions"
-          git add dados/relatorio.csv
-          git commit -m "Atualização diaria"
-          git push
+          git config user.email "actions@github.com"
+          if [ -n "$(git status --porcelain dados/relatorio.csv)" ]; then
+            git add dados/relatorio.csv
+            git commit -m "Atualização diaria"
+            git push
+          else
+            echo "No changes detected in dados/relatorio.csv. Skipping commit."
+          fi
       env:
         GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
