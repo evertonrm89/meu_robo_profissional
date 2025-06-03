@@ -15,7 +15,6 @@ jobs:
 
     - name: Commit do Relatorio
       run: |
-          git branch -u origin/master
           git config user.name "github-actions"
           git add dados/relatorio.csv
           git commit -m "Atualização diaria"
