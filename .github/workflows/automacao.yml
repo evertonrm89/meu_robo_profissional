@@ -15,18 +15,14 @@ jobs:
 
     - name: Commit do Relatorio
       run: |
-          git config user.name "github-actions"
-          git config user.email "actions@github.com"
-          if [ -f dados/relatorio.csv ]; then
-            if [ -n "$(git status --porcelain dados/relatorio.csv)" ]; then
-              git add dados/relatorio.csv
-              git commit -m "Atualização diaria"
-              git push
-            else
-              echo "Nenhuma alteração detectada em dados/relatorio.csv. Pulando commit."
-            fi
-          else
-            echo "Arquivo dados/relatorio.csv não encontrado."
-          fi
+        git config user.name "github-actions"
+        git config user.email "actions@github.com"
+        if [ -f dados/relatorio.csv ]; then
+          git add dados/relatorio.csv
+          git commit -m "Atualização diaria"
+          git push
+        else
+          echo "Arquivo dados/relatorio.csv não encontrado."
+        fi
       env:
         GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
