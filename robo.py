@@ -10,7 +10,7 @@ def coletar_dados():
 #Salvar em um CSV
 def salvar_relatorio(dados):
     df = pd.DataFrame(dados)
-    df.to_csv('./dados/relatorio.csv', index=False)
+    df.to_csv('dados/relatorio.csv', index=False)
     print("Relatorio Salvo com Sucesso")
     
 #Execução principal
